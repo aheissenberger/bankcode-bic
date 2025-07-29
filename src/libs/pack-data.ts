@@ -14,7 +14,7 @@ export type DataResultKeyed = {
   banks: BanksKeyed
 }
 
-type KeysSerialized = Record<FieldNameType, Record<string, number>>
+type KeysSerialized = Partial<Record<FieldNameType, Record<string, number>>>
 export type DataResultSerialized = {
   type: 'serialized'
   keys: KeysSerialized
@@ -65,6 +65,9 @@ export function packData(
       let index = 0
       for (const row of data) {
         for (const keyName of keyNames) {
+          if (!keysData[keyName]) {
+            keysData[keyName] = {}
+          }
           keysData[keyName][getField(keyName, row)] = index
         }
         banks[index++] = getFields(fieldNames, row)
