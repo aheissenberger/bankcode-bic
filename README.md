@@ -180,6 +180,13 @@ Read [Copilot Instructions](./github/copilot-instructions.md) for an overview of
 
 Thank you for helping make this project better!
 
+**Publishing:**
+
+1. upgrade package version
+2. push to github
+3. set a tag similar to package version `git tag v0.0.11`
+4. push tag `git push origin v0.0.11`
+
 ## TODO
 
 [ ] add more countries
