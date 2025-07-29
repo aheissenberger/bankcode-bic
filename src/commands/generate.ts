@@ -3,11 +3,11 @@ import { join } from 'node:path'
 
 import {
   fieldNames as allFieldNames,
-  getField,
+  type FieldNameType,
   type ScrapeDownloadUrlResult,
 } from '../download/download'
 import { Cache } from '../libs/cache'
-import { packData } from '../libs/pack-data'
+import { packData, type DataResult } from '../libs/pack-data'
 
 export type ExportFormatType = 'json' | 'js' | 'ts'
 
@@ -41,8 +41,12 @@ export async function GenerateCommand(
     'fr',
     'es',
   ]
-  const fieldNames = (options?.fieldNames ?? allFieldNames).map((name) => name.toLowerCase())
-  const keyNames = (options?.keyNames ?? []).map((name) => name.toLowerCase())
+  const fieldNames = (options?.fieldNames ?? allFieldNames).map((name) =>
+    name.toLowerCase(),
+  ) as FieldNameType[]
+  const keyNames = (options?.keyNames ?? []).map((name) =>
+    name.toLowerCase(),
+  ) as FieldNameType[]
   const outputFormat = options?.format?.toLowerCase() ?? 'js'
   for (const country of countries) {
     const importFilePath = `../download/${country}.js`
@@ -119,11 +123,17 @@ export async function GenerateCommand(
   }
 }
 function createJavascriptExport(
-  data: object,
+  data: DataResult,
   header: string,
   typescript = false,
 ): string {
-  return `${header}${typescript === true ? `import { DataResult } from 'bankcode-bic';\n` : ''}export const bankData${typescript === true ? ' : DataResult' : ''} = ${JSON.stringify(data, null, 0)};`
+  const typeScriptType =
+    data.type === 'keyed'
+      ? 'DataResultKeyed'
+      : data.type === 'serialized'
+        ? 'DataResultSerialized'
+        : 'DataResultFlat'
+  return `${header}${typescript === true ? `import type { ${typeScriptType} } from 'bankcode-bic';\n` : ''}export const bankData${typescript === true ? ' : ${typeScriptType}' : ''} = ${JSON.stringify(data, null, 0)};`
 }
 
 function printSourceInfo(
@@ -138,6 +148,3 @@ function printSourceInfo(
 `
 }
 
-function getFields(fieldNames: string[], row: string[]) {
-  return fieldNames.map((field) => getField(field, row))
-}
