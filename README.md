@@ -7,6 +7,12 @@ This library will fetch the list from the European Central Bank and cache localy
 
 To convert from IBAN to BIC use one of the many IBAN libraries e.g. [ibankit-js](https://github.com/koblas/ibankit-js) to retrive the BankCode from the IBAN.
 
+## Installation
+
+install from npm:
+
+`npm i bankcode-bic # or yarn bankcode-bic, or pnpm add bankcode-bic`
+
 ## Usage
 
 ### API
