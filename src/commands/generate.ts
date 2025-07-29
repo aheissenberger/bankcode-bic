@@ -133,7 +133,7 @@ function createJavascriptExport(
       : data.type === 'serialized'
         ? 'DataResultSerialized'
         : 'DataResultFlat'
-  return `${header}${typescript === true ? `import type { ${typeScriptType} } from 'bankcode-bic';\n` : ''}export const bankData${typescript === true ? ' : ${typeScriptType}' : ''} = ${JSON.stringify(data, null, 0)};`
+  return `${header}${typescript === true ? `import type { ${typeScriptType} } from 'bankcode-bic';\n` : ''}export const bankData${typescript === true ? `: ${typeScriptType}` : ''} = ${JSON.stringify(data, null, 0)};`
 }
 
 function printSourceInfo(
