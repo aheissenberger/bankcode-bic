@@ -3,7 +3,6 @@ name: Release & Publish to npm
 on:
   push:
     tags:
-jobs:
 
 jobs:
   build-and-publish:
