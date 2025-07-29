@@ -22,7 +22,7 @@ export async function fetchData(country: string, options: fetchDataOptions) {
   const importFilePath = `../download/${country}.js`
   const { getDownloadUrl, downloadCSV, parseCSV } = await import(importFilePath)
   const fieldNames = options?.fieldNames ?? allFieldNames
-  const keyNames = options?.keyNames ?? ['BankCode']
+  const keyNames = options?.keyNames ?? ['bankcode']
   const fetchFn = options?.fetchFn ?? globalThis.fetch
   const downloadUrl = await getDownloadUrl(fetchFn)
   if (!downloadUrl) {
