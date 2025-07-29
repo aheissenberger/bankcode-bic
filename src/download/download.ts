@@ -22,44 +22,44 @@ export interface DownloadType {
   (url: string, fetchFn: typeof globalThis.fetch): Promise<CSVString>
 }
 export type BankData = [
-  BankCode: string,
-  BIC: string,
-  Name: string,
-  Address: string,
-  PostCode: string,
-  City: string,
-  Phone: string,
-  Fax: string,
-  Email: string,
-  Website: string,
+  bankcode: string,
+  bic: string,
+  name: string,
+  address: string,
+  postcode: string,
+  city: string,
+  phone: string,
+  fax: string,
+  email: string,
+  website: string,
 ]
 export interface ParseCSVType {
   (cvs: CSVString | Unzipped, countryCode: string): BankData[]
 }
 
 export type FieldNameType =
-  | 'BankCode'
-  | 'BIC'
-  | 'Name'
-  | 'Address'
-  | 'PostCode'
-  | 'City'
-  | 'Phone'
-  | 'Fax'
-  | 'Email'
-  | 'Website'
+  | 'bankcode'
+  | 'bic'
+  | 'name'
+  | 'address'
+  | 'postcode'
+  | 'city'
+  | 'phone'
+  | 'fax'
+  | 'email'
+  | 'website'
 
 export const fieldNames: FieldNameType[] = [
-  'BankCode',
-  'BIC',
-  'Name',
-  'Address',
-  'PostCode',
-  'City',
-  'Phone',
-  'Fax',
-  'Email',
-  'Website',
+  'bankcode',
+  'bic',
+  'name',
+  'address',
+  'postcode',
+  'city',
+  'phone',
+  'fax',
+  'email',
+  'website',
 ]
 
 export const getField = (() => {

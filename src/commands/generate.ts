@@ -41,8 +41,8 @@ export async function GenerateCommand(
     'fr',
     'es',
   ]
-  const fieldNames = options?.fieldNames ?? allFieldNames
-  const keyNames = options?.keyNames ?? []
+  const fieldNames = (options?.fieldNames ?? allFieldNames).map((name) => name.toLowerCase())
+  const keyNames = (options?.keyNames ?? []).map((name) => name.toLowerCase())
   const outputFormat = options?.format?.toLowerCase() ?? 'js'
   for (const country of countries) {
     const importFilePath = `../download/${country}.js`
