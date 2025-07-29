@@ -1,0 +1,89 @@
+{
+  "name": "bankcode-bic",
+  "version": "0.0.1",
+  "packageManager": "pnpm@10.11.0",
+  "description": "Convert bank codes to BICs, Name of bank. Currently supports only some selected EU countries.",
+  "type": "module",
+  "keywords": [
+    "bank",
+    "bankcode",
+    "bic",
+    "converter",
+    "eu"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/aheissenberger/bankcode-bic#readme",
+  "bugs": {
+    "url": "https://github.com/aheissenberger/bankcode-bic/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aheissenberger/bankcode-bic.git"
+  },
+  "author": "Andreas Heissenberger <andreas@heissenberger.at>",
+  "funding": "https://github.com/sponsors/aheissenberger",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist",
+    "docs",
+    "package.json"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./cli": "./dist/cli.js",
+    "./package.json": "./package.json",
+    "./libs/cache": {
+      "browser": "./dist/libs/cache.browser.js",
+      "node": "./dist/libs/cache.node.js",
+      "default": "./dist/libs/cache.browser.js"
+    },
+    "./libs/cached-fetch": {
+      "browser": "./dist/libs/cached-fetch.browser.js",
+      "node": "./dist/libs/cached-fetch.node.js",
+      "default": "./dist/libs/cached-fetch.browser.js"
+    },
+    "./libs/ungzip": {
+      "browser": "./dist/libs/ungzip.browser.js",
+      "node": "./dist/libs/ungzip.node.js",
+      "default": "./dist/libs/ungzip.browser.js"
+    }
+  },
+  "bin": {
+    "bankcode-bic": "./dist/cli.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm run lint --fix",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --cache --write .",
+    "release": "bumpp && pnpm publish",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2"
+  },
+  "devDependencies": {
+    "@sxzz/eslint-config": "^7.1.1",
+    "@sxzz/prettier-config": "^2.2.3",
+    "@types/node": "^24.1.0",
+    "bumpp": "^10.2.1",
+    "eslint": "^9.32.0",
+    "happy-dom": "^18.0.1",
+    "prettier": "^3.6.2",
+    "tsdown": "^0.13.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "prettier": "@sxzz/prettier-config"
+}

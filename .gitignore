@@ -1,0 +1,11 @@
+node_modules
+dist
+*.tgz
+*.log
+.DS_Store
+.eslintcache
+data
+.cache
+.vscode/settings.json
+output
+example

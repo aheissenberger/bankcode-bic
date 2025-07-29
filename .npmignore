@@ -1,0 +1,12 @@
+# npm package ignore file
+# Exclude files and folders from npm package
+
+# Ignore everything...
+/*
+
+# ...except these:
+!dist/
+!docs/
+!README.md
+!LICENSE
+!package.json
