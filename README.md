@@ -5,6 +5,8 @@ This libray is an extention to exiting IBAN libraries which can extract the ISO 
 
 This library will fetch the list from the European Central Bank and cache localy for multiple requests.
 
+To convert from IBAN to BIC use one of the many IBAN libraries e.g. [ibankit-js](https://github.com/koblas/ibankit-js) to retrive the BankCode from the IBAN.
+
 ## Usage
 
 ### API
