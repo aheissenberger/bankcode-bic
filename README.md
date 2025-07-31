@@ -3,7 +3,7 @@
 Convert bank codes to BICs and vice versa. Currently supports only banks from the following countries: AT, BE, DE, ES, FR ([see adding support for other countries](#contributing))
 This libray is an extention to exiting IBAN libraries which can extract the ISO CountryCode and BankCode from an IBAN but cannot provide the BIC, Name and Address of the Bank.
 
-This library will fetch the list from the European Central Bank and cache localy for multiple requests.
+This library will fetch the list from the European Central Bank and cache localy for multiple requests. The function to fetch and the specific implementations per country do not depend on any JavaScript environment which allows to implement this on edge functions in the cloud.
 
 To convert from IBAN to BIC use one of the many IBAN libraries e.g. [ibankit-js](https://github.com/koblas/ibankit-js) to retrive the BankCode from the IBAN.
 
