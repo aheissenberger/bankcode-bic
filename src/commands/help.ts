@@ -1,4 +1,4 @@
-export function showHelp(cmd: string): void {
+export function showHelp(cmd?: string): void {
   if (cmd === 'lookup') {
     console.info(`Usage: bankcode-bic lookup <file> <keyName> <keyValue>
 

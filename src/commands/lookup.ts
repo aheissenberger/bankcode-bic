@@ -9,7 +9,7 @@ interface LookupOptions {
   debug?: boolean
 }
 
-export async function lookup(
+export async function LookupCommand(
   values: string[],
   options: LookupOptions,
 ): Promise<any> {
