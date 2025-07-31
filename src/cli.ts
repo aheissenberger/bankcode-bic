@@ -4,6 +4,7 @@ import { DownloadCommand } from './commands/download'
 import { GenerateCommand, type ExportFormatType } from './commands/generate'
 import { showHelp } from './commands/help'
 import { LookupCommand } from './commands/lookup'
+import { splitCommaSeparatedValues } from './libs/utils'
 
 export async function main(
   options = {
@@ -14,7 +15,7 @@ export async function main(
       lookup: LookupCommand,
       exitApp: process.exit,
     },
-    cmdlineArgs: process.argv
+    cmdlineArgs: undefined,
   },
 ) {
   const { cmds, cmdlineArgs } = options
@@ -27,7 +28,7 @@ export async function main(
         'cache-ttl': { type: 'string' },
         'no-cache': { type: 'boolean' },
         'clear-cache': { type: 'boolean' },
-        'filter-country': { type: 'string', multiple: true },
+        'filter-countries': { type: 'string', multiple: true },
         'key-names': { type: 'string', multiple: true },
         'field-names': { type: 'string', multiple: true },
         quiet: { type: 'boolean' },
@@ -70,7 +71,7 @@ export async function main(
         cmds.exitApp(1)
       }
       await cmds.download(positionals[1], {
-        filterCountries: flags?.['filter-country'],
+        filterCountries: splitCommaSeparatedValues(flags?.['filter-countries']),
         clearCache: flags?.['clear-cache'],
         noCache: flags?.['no-cache'],
         ttlMs: flags?.['cache-ttl']
@@ -94,9 +95,9 @@ export async function main(
         cmds.exitApp(1)
       }
       await cmds.generate(positionals[1], {
-        filterCountries: flags?.['filter-country'],
-        fieldNames: flags?.['field-names'],
-        keyNames: flags?.['key-names'],
+        filterCountries: splitCommaSeparatedValues(flags?.['filter-countries']),
+        fieldNames: splitCommaSeparatedValues(flags?.['field-names']),
+        keyNames: splitCommaSeparatedValues(flags?.['key-names']),
         format: flags?.format as ExportFormatType,
         // details: flags?.details,
         clearCache: flags?.['clear-cache'],
@@ -134,6 +135,6 @@ export async function main(
       cmds.exitApp(1)
   }
 }
-if (require.main === module && process.env.VITEST !== 'true') {
+if (process.env.VITEST !== 'true') {
   await main()
 }

@@ -13,3 +13,14 @@ export function getCSVStats(csvString: string): {
   const columnCount = lines[0].split('\t').length
   return { rowCount, columnCount }
 }
+
+export function splitCommaSeparatedValues(
+  csvString: string | string[] | undefined,
+) {
+  if (csvString === undefined) return undefined
+  return (
+    Array.isArray(csvString)
+      ? csvString
+      : [typeof csvString === 'string' ? csvString : '']
+  ).flatMap((str) => str.split(',').map((value) => value.trim()))
+}
