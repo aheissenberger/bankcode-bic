@@ -1,6 +1,6 @@
 {
   "name": "bankcode-bic",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "packageManager": "pnpm@10.11.0",
   "description": "Convert bank codes from IBAN to BICs, Name of bank. Currently supports only some selected EU countries.",
   "type": "module",
