@@ -112,13 +112,17 @@ Key: `localcache-meta`
 
 ## Datasets
 
-| Country      | Source Website                                                                                                                                           |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Austria (AT) | [Österreichische Nationalbank Bankstellenverzeichnis](https://www.oenb.at/en/Statistics/Reporting-Systems/Bank-identifier-code.html)                     |
-| Belgium (BE) | [National Bank of Belgium Bank Identification Codes](https://www.nbb.be/en/financial-oversight/bank-identification-codes)                                |
-| Germany (DE) | [Deutsche Bundesbank Bankleitzahlendatei](https://www.bundesbank.de/en/tasks/payment-systems/bank-sort-codes)                                            |
-| Spain (ES)   | [European Central Bank Financial Institutions](https://www.ecb.europa.eu/stats/financial_corporations/list_of_financial_institutions/html/index.en.html) |
-| France (FR)  | [European Central Bank Financial Institutions](https://www.ecb.europa.eu/stats/financial_corporations/list_of_financial_institutions/html/index.en.html) |
+Datasets are published in different formats (csv, csv.gz, xlsx) and do not provide all columns.
+
+| Country      | Source Website                                                                                                                                           | Format | Available Columns (original)                                                                                                                                             |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Austria (AT) | [Österreichische Nationalbank Bankstellenverzeichnis](https://www.oenb.at/en/Statistics/Reporting-Systems/Bank-identifier-code.html)                     | csv    | bankcode (Bankleitzahl), bic (SWIFT-Code), name (Bankenname), street (Straße), postal (PLZ), city (Ort), phone (Telefon), fax (Fax), email (E-Mail), homepage (Homepage) |
+| Belgium (BE) | [National Bank of Belgium Bank Identification Codes](https://www.nbb.be/en/financial-oversight/bank-identification-codes)                                | xlsx   | bankcode (T_Identification_Number), bic (Biccode), name (T_Institutions_English/Dutch/French)                                                                            |
+| Germany (DE) | [Deutsche Bundesbank Bankleitzahlendatei](https://www.bundesbank.de/en/tasks/payment-systems/bank-sort-codes)                                            | csv    | bankcode (Bankleitzahl), bic (BIC), name (Bezeichnung), postal (PLZ), city (Ort)                                                                                         |
+| Spain (ES)   | [European Central Bank Financial Institutions](https://www.ecb.europa.eu/stats/financial_corporations/list_of_financial_institutions/html/index.en.html) | csv.gz | bankcode[[1]](#riadcode2bankcode) (RIAD_CODE), bic (BIC), name (NAME), address (ADDRESS), postal (POSTAL), city (CITY)                                                   |
+| France (FR)  | [European Central Bank Financial Institutions](https://www.ecb.europa.eu/stats/financial_corporations/list_of_financial_institutions/html/index.en.html) | csv.gz | bankcode[[1]](#riadcode2bankcode) (RIAD_CODE), bic (BIC), name (NAME), address (ADDRESS), postal (POSTAL), city (CITY)                                                   |
+
+<a name="riadcode2bankcode"></a>[1] Riad Code for France and Spain contains the BankCode after the country code e.g. `RIAD_CODE:FR10128` => `BankCode:10128`
 
 ## Development
 
