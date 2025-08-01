@@ -20,7 +20,7 @@ Commands:
                                        Example: bankcode-bic lookup de.js BankCode 305156796
 
 Global Options:
-  --filter-countries <country>  Filter results by country code (e.g., DE, LT)
+  --countries <country>  Filter results by country code (e.g., DE, LT)
   --clear-cache        Clear the cache before downloading data
   --debug              Enable debug output
   --no-cache           Disable caching of downloaded data
@@ -35,8 +35,8 @@ only for 'generate' command:
 
 
 Examples:
-  generate bankcode-bic-data.js --filter-countries DE,LT
-  bankcode-bic lookup bankcode LT 305156796 --import-bank-db bankcode-bic-data.js
+  generate ./output --field-names bic,name --key-names bankcode --countries DE,LT
+  bankcode-bic lookup ./output/de.js bankcode 10010010
 
 For more information, visit: https://github.com/aheissenberger/bankcode-bic
 `)

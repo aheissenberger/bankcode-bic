@@ -24,7 +24,7 @@ For more details check out the full [API Docs](./docs/API.md).
 This is a example nodejs cli app which uses the generated data.
 
 1. generate the data which will create the file `./output/de.js`
-   `npm run bankcode-bic generate --filter-countries de ./output --key-names BankCode --field-names BIC`
+   `npm run bankcode-bic generate --countries de ./output --key-names BankCode --field-names BIC`
 
 2. import the file `./output/de.js` into your application
 
@@ -53,7 +53,7 @@ Commands:
                                        Example: bankcode-bic lookup de.js BankCode 305156796
 
 Global Options:
-  --filter-countries <country>  Filter results by country code (e.g., DE, LT)
+  --countries <country>  Filter results by country code (e.g., DE, LT)
   --clear-cache        Clear the cache before downloading data
   --debug              Enable debug output
   --no-cache           Disable caching of downloaded data
@@ -68,8 +68,8 @@ only for 'generate' command:
 
 
 Examples:
-  generate bankcode-bic-data.js --filter-countries DE,LT
-  bankcode-bic lookup bankcode LT 305156796 --import-bank-db bankcode-bic-data.js
+  generate ./output --field-names bic,name --key-names bankcode --countries DE,LT
+  bankcode-bic lookup ./output/de.js bankcode 10010010
 
 ```
 
@@ -78,7 +78,7 @@ Examples:
 **generate:** create a dataset with search keys BankCode, BIC and the fields BankCode, BIC, Name.
 
 ```sh
-$ bankcode-bic % pnpm bankcode-bic generate --filter-countries de ./output --key-names BankCode --key-names BIC --field-names BankCode --field-names BIC --field-names Name
+$ bankcode-bic % pnpm bankcode-bic generate --countries de ./output --key-names BankCode --key-names BIC --field-names BankCode --field-names BIC --field-names Name
 Download URL (cached): https://www.bundesbank.de/resource/blob/926192/bdb8c7e624fa55dd552f73312f6a44db/472B63F073F071307366337C94F8C870/blz-aktuell-csv-data.csv
 Fetched data (cached) Size: 1900725 bytes
 Parsed data (cached) Size: 3080 rows

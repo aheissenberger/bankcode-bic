@@ -1,4 +1,3 @@
-
 # Copilot Instructions for bankcode-bic
 
 ## Project Purpose & Architecture
@@ -35,7 +34,7 @@
   - `packData` supports three formats: `flat` (no key), `keyed` (one key), `serialized` (multi-key). See `src/libs/pack-data.ts` for rules and examples.
 - **CLI:**
   - Commands: `download`, `generate`, `lookup`, `help`.
-  - Options: `--filter-countries`, `--clear-cache`, `--debug`, `--no-cache`, `--cache-ttl <ms>`, `--field-names`, `--key-names`, `--format`, `-h/--help`.
+  - Options: `--countries`, `--clear-cache`, `--debug`, `--no-cache`, `--cache-ttl <ms>`, `--field-names`, `--key-names`, `--format`, `-h/--help`.
   - See `src/cli.ts` for argument parsing and dispatch. CLI is testable by injecting mocks for command handlers and process.exit.
 - **Testing:**
   - All cache logic is covered by unit tests with custom FS/v8 mocks.

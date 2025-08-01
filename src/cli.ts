@@ -28,7 +28,7 @@ export async function main(
         'cache-ttl': { type: 'string' },
         'no-cache': { type: 'boolean' },
         'clear-cache': { type: 'boolean' },
-        'filter-countries': { type: 'string', multiple: true },
+        countries: { type: 'string', multiple: true },
         'key-names': { type: 'string', multiple: true },
         'field-names': { type: 'string', multiple: true },
         quiet: { type: 'boolean' },
@@ -71,7 +71,7 @@ export async function main(
         cmds.exitApp(1)
       }
       await cmds.download(positionals[1], {
-        filterCountries: splitCommaSeparatedValues(flags?.['filter-countries']),
+        filterCountries: splitCommaSeparatedValues(flags?.countries),
         clearCache: flags?.['clear-cache'],
         noCache: flags?.['no-cache'],
         ttlMs: flags?.['cache-ttl']
@@ -95,7 +95,7 @@ export async function main(
         cmds.exitApp(1)
       }
       await cmds.generate(positionals[1], {
-        filterCountries: splitCommaSeparatedValues(flags?.['filter-countries']),
+        filterCountries: splitCommaSeparatedValues(flags?.countries),
         fieldNames: splitCommaSeparatedValues(flags?.['field-names']),
         keyNames: splitCommaSeparatedValues(flags?.['key-names']),
         format: flags?.format as ExportFormatType,
