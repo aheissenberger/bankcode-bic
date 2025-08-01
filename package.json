@@ -73,16 +73,16 @@
     "fflate": "^0.8.2"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^7.1.1",
+    "@sxzz/eslint-config": "^7.1.2",
     "@sxzz/prettier-config": "^2.2.3",
     "@types/node": "^24.1.0",
-    "bumpp": "^10.2.1",
+    "bumpp": "^10.2.2",
     "eslint": "^9.32.0",
     "happy-dom": "^18.0.1",
     "prettier": "^3.6.2",
-    "tsdown": "^0.13.0",
+    "tsdown": "^0.13.1",
     "tsx": "^4.20.3",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   },
   "prettier": "@sxzz/prettier-config"
