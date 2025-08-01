@@ -65,6 +65,10 @@ export async function main(
 
   switch (command) {
     case 'download':
+      if (flags?.help) {
+        cmds.help(command)
+        cmds.exitApp(0)
+      }
       if (positionals.length < 2) {
         console.error('Please provide a file path for the downloaded data.')
         cmds.help()
@@ -80,6 +84,10 @@ export async function main(
       })
       break
     case 'generate':
+      if (flags?.help) {
+        cmds.help(command)
+        cmds.exitApp(0)
+      }
       if (positionals.length < 2) {
         console.error('Please provide a file path for the generated data.')
         cmds.help()
@@ -110,6 +118,10 @@ export async function main(
       break
 
     case 'lookup': {
+      if (flags?.help) {
+        cmds.help(command)
+        cmds.exitApp(0)
+      }
       try {
         positionals.shift()
         await cmds.lookup(positionals, {
